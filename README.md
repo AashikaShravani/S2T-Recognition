@@ -29,17 +29,16 @@ The tool supports multiple languages and dialects, making it versatile for vario
 
 1. English Text - 
 <p align = "Center"> 
-  <img src = "https://github.com/AashikaShravani/S2T-Recognition/assets/140937457/00b71bc8-4bbe-4eb5-94a9-7f6d2e042f87">
+  <img src = "https://github.com/AashikaShravani/S2T-Recognition/assets/140937457/6c71ef42-16ea-4c68-b096-7846aaa272bb">
 </p>
-
 
 2. Tanglish Text -
  <p align = "Center"> 
-  <img src = "https://github.com/AashikaShravani/S2T-Recognition/assets/140937457/de2f6640-b745-45e4-b762-cc4274e334a2">
+  <img src = "https://github.com/AashikaShravani/S2T-Recognition/assets/140937457/5c6c29f1-db19-4a18-8d69-442bd8d95d39">
 </p>  
 
 3. Tanglish Text - 
 <p align = "Center"> 
-  <img src = "https://github.com/AashikaShravani/S2T-Recognition/assets/140937457/1b43baf4-528d-48ce-8618-e7f3c6ecbb3c">
+  <img src = "https://github.com/AashikaShravani/S2T-Recognition/assets/140937457/ef9358e0-752e-4ad9-a8ea-b96f8a64c548">
 </p>
 
