@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>SPEECH-TO-TEXT</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="static/box.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+</head>
+
+<body class="sub_page">
+  <div class="hero_area ">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="">
+          </a>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function recognizeFromMicrophone() {
+            $.post("/recognize-microphone", function (data) {
+                if (data.error) {
+                    alert("Error: " + data.error);
+                } else {
+                    $("#output").text("Recognized Text: " + data.text);
+                }
+            });
+        }
+
+        function recognizeFromFile() {
+            $.post("/recognize-audio-file", function (data) {
+                if (data.error) {
+                    alert("Error: " + data.error);
+                } else {
+                    $("#output").text("Recognized Text: " + data.text);
+                }
+            });
+        }
+    </script>
+
+    <div class="container">
+        <header>
+            <h4>Speech-To-Text</h4>
+        </header>
+        <main>
+            <div class="button-container">
+                <button class="btn microphone-btn" onclick="recognizeFromMicrophone()">
+                    <i class="fas fa-microphone"></i> Recognize from Microphone
+                </button>
+                <button class="btn file-btn" onclick="recognizeFromFile()">
+                    <i class="fas fa-file-audio"></i> Recognize from Audio File
+                </button>
+            </div>
+            <div id="output" class="output"></div>
+        </main>
+    </div>
+
+  </div>
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section ">
+    <p>
+      &copy; 2019 All Rights Reserved. Design by
+      <a href="https://html.design/">Free Html Templates</a>
+    </p>
+  </section>
+  <!-- end footer section -->
+
+  <script type="text/javascript" src="static/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="static/bootstrap.js"></script>
+  <script>
+    function openNav() {
+      document.getElementById("myNav").classList.toggle("menu_width")
+      document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
+    }
+  </script>
+</body>
+</html>
