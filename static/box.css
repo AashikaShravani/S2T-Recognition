@@ -1,0 +1,113 @@
+/* Center the main container */
+.container {
+    width: 600px;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 100px; /* Added margin-top for spacing */
+}
+
+/* Header Styling */
+header {
+    font-size: 36px;
+    color: #fd7e14;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Button Styling */
+button.btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 16px;
+    font-size: 24px;
+    background: linear-gradient(45deg, #fd7e14, #ffae42);
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+button.btn:hover {
+    background: linear-gradient(45deg, #ffae42, #fd7e14);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Center the output box */
+#output {
+    background: #fd7e14;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    color: #000000;
+    margin: 20px auto; /* Horizontally center the output box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    width: 80%; /* Added width for consistent padding */
+}
+
+/* Footer Section */
+.footer_section {
+    background-color: #fd7e14;
+    color: #000000;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer_section p {
+    margin: 0;
+}
+
+.footer_section a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer_section a:hover {
+    color: #ffae42;
+}
+
+/* Body Styling */
+body {
+    font-family: "Poppins", sans-serif;
+    color: #fd7e14;
+    background: url('images/img.jpeg') no-repeat center center fixed; /* Local image */
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/* Additional Styling for the container */
+.container {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Overlay pattern */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Overlay to darken the background image */
+    pointer-events: none; /* Ensures the overlay doesn't interfere with interactions */
+}
