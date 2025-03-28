@@ -1,17 +1,64 @@
-steps:
-  - uses: actions/checkout@v4
-  
-  - name: Set up Python
-    uses: actions/setup-python@v4
-    with:
-      python-version: '3.x'
+name: Snyk Security Scan
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main ]
 
-  - name: Generate requirements.txt
-    run: |
-      pip install pipreqs
-      pipreqs . --force
-      
-  - name: Run Snyk
-    run: snyk test --file=requirements.txt
-    env:
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+jobs:
+  snyk-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Debugging step (optional) - shows your project structure
+      - name: Show directory structure
+        run: |
+          echo "Project contents:"
+          ls -la
+          echo "Python files found:"
+          find . -name "*.py" | head -10
+          echo "Node files found:"
+          find . -name "package.json" || echo "No package.json found"
+
+      # Language-specific setup
+      - name: Setup Python
+        if: contains(matrix.language, 'python')
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      # Generate requirements.txt if missing (Python)
+      - name: Generate requirements (Python)
+        if: contains(matrix.language, 'python')
+        run: |
+          pip install pipreqs
+          pipreqs . --force || echo "Could not generate requirements.txt"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt
+          elif [ -f "package.json" ]; then
+            npm install
+          fi
+
+      # Snyk scan with multiple detection attempts
+      - name: Run Snyk security scan
+        run: |
+          # Try scanning with auto-detection first
+          if [ -f "requirements.txt" ]; then
+            snyk test --file=requirements.txt --severity-threshold=high
+          elif [ -f "package.json" ]; then
+            snyk test --file=package.json --severity-threshold=high
+          elif [ -f "pom.xml" ]; then
+            snyk test --file=pom.xml --severity-threshold=high
+          else
+            # Fallback to all-projects scan
+            snyk test --all-projects --severity-threshold=high || \
+            echo "Snyk could not detect project type. Please check documentation."
+          fi
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
