@@ -1,4 +1,4 @@
 Flask
 SpeechRecognition
 pydub
-pyaudio
+pyAudio
