@@ -1,10 +1,16 @@
-name: Workflow for Maven using Snyk security scan
+name: Workflow for Python using Snyk security scan
 on: push
 jobs:
   security:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
         continue-on-error: true
